@@ -1,0 +1,21 @@
+* {
+
+}
+
+header, main, footer {
+    width: 740px;
+    margin: auto;
+    background-color: rgb(157, 191, 178);
+}
+
+input {
+    width: 50px;
+    height: 25px;
+}
+
+#applied-border {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    margin: 25px 0;
+}
