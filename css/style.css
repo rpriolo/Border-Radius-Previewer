@@ -13,9 +13,12 @@ input {
     height: 25px;
 }
 
-#box {
+.box {
     width: 300px;
     height: 300px;
     border: 1px solid black;
     margin: 25px 0;
+
+    border-radius: 10px 10px 10px 0;
+
 }
