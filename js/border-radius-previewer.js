@@ -2,8 +2,8 @@ let box = document.querySelector('.box');
 
 let topLeft = document.querySelector('#top-left');
 let topRight = document.querySelector('#top-right');
-let bottomLeft = document.querySelector('#bottom-left');
 let bottomRight = document.querySelector('#bottom-right');
+let bottomLeft = document.querySelector('#bottom-left');
 
 let codeButton = document.querySelector('#generate-code');
 let codeDiv = document.querySelector('#code');
@@ -15,12 +15,39 @@ function setBorderRadius() {
     box.style.borderBottomLeftRadius = `${bottomLeft.value}px`;
 }
 
-topLeft.addEventListener('input', setBorderRadius);
-topRight.addEventListener('input', setBorderRadius);
-bottomLeft.addEventListener('input', setBorderRadius);
-bottomRight.addEventListener('input', setBorderRadius);
+function validateNumber() {
+    if (this.value < 0) {
+        this.value = 0;
+        setBorderRadius();
+    }
+}
 
-codeButton.addEventListener('click', generateCode);
+function setDefaultValue() {
+    if (topLeft.value == '' || topLeft.value < 0) {
+        topLeft.value = 0;
+    }
+
+    if (topRight.value == '' || topRight.value < 0) {
+        topRight.value = 0;
+    }
+
+    if (bottomRight.value == '' || bottomRight.value < 0) {
+        bottomRight.value = 0;
+    }
+
+    if (bottomLeft.value == '' || bottomLeft.value < 0) {
+        bottomLeft.value = 0;
+    }
+}
+
+function compareValues() {
+    if (topLeft.value == topRight.value &&
+        topRight.value == bottomRight.value &&
+        bottomRight.value == bottomLeft.value &&
+        bottomLeft.value == topLeft.value) {
+        return true;
+    }
+}
 
 function generateCode() {
 
@@ -49,44 +76,16 @@ function generateCode() {
 
     codeDiv.innerHTML += `<p>${code1}</p>`;
     codeDiv.innerHTML += `<p>${code2}</p>`;
-
 }
 
-function setDefaultValue() {
+topLeft.addEventListener('input', setBorderRadius);
+topRight.addEventListener('input', setBorderRadius);
+bottomRight.addEventListener('input', setBorderRadius);
+bottomLeft.addEventListener('input', setBorderRadius);
 
-    let getAlert = false;
+topLeft.addEventListener('focusout', validateNumber);
+topRight.addEventListener('focusout', validateNumber);
+bottomRight.addEventListener('focusout', validateNumber);
+bottomLeft.addEventListener('focusout', validateNumber);
 
-    if (topLeft.value == '' || topLeft.value < 0) {
-        topLeft.value = 0;
-        getAlert = true;
-    }
-
-    if (topRight.value == '' || topRight.value < 0) {
-        topRight.value = 0;
-        getAlert = true;
-    }
-
-    if (bottomRight.value == '' || bottomRight.value < 0) {
-        bottomRight.value = 0;
-        getAlert = true;
-    }
-
-    if (bottomLeft.value == '' || bottomLeft.value < 0) {
-        bottomLeft.value = 0;
-        getAlert = true;
-    }
-
-    if (getAlert) {
-        alert('The negative numbers were turned into zero');
-    }
-
-}
-
-function compareValues() {
-    if (topLeft.value == topRight.value &&
-        topRight.value == bottomRight.value &&
-        bottomRight.value == bottomLeft.value &&
-        bottomLeft.value == topLeft.value) {
-        return true;
-    }
-}
+codeButton.addEventListener('click', generateCode);
