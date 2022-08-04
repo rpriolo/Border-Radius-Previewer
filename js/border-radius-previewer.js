@@ -48,27 +48,38 @@ function generateCode() {
     }`
 
     codeDiv.innerHTML += `<p>${code1}</p>`;
-    // codeDiv.innerHTML += '<br>'
     codeDiv.innerHTML += `<p>${code2}</p>`;
 
 }
 
 function setDefaultValue() {
-    if (topLeft.value == '') {
+
+    let getAlert = false;
+
+    if (topLeft.value == '' || topLeft.value < 0) {
         topLeft.value = 0;
+        getAlert = true;
     }
 
-    if (topRight.value == '') {
+    if (topRight.value == '' || topRight.value < 0) {
         topRight.value = 0;
+        getAlert = true;
     }
 
-    if (bottomRight.value == '') {
+    if (bottomRight.value == '' || bottomRight.value < 0) {
         bottomRight.value = 0;
+        getAlert = true;
     }
 
-    if (bottomLeft.value == '') {
+    if (bottomLeft.value == '' || bottomLeft.value < 0) {
         bottomLeft.value = 0;
+        getAlert = true;
     }
+
+    if (getAlert) {
+        alert('The negative numbers were turned into zero');
+    }
+
 }
 
 function compareValues() {
@@ -76,6 +87,6 @@ function compareValues() {
         topRight.value == bottomRight.value &&
         bottomRight.value == bottomLeft.value &&
         bottomLeft.value == topLeft.value) {
-            return true;
-        }
+        return true;
+    }
 }
