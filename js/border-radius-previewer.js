@@ -5,6 +5,9 @@ let topRight = document.querySelector('#top-right');
 let bottomLeft = document.querySelector('#bottom-left');
 let bottomRight = document.querySelector('#bottom-right');
 
+let codeButton = document.querySelector('#generate-code');
+let codeDiv = document.querySelector('#code');
+
 function setBorderRadius() {
     box.style.borderTopLeftRadius = `${topLeft.value}px`;
     box.style.borderTopRightRadius = `${topRight.value}px`;
@@ -17,27 +20,38 @@ topRight.addEventListener('input', setBorderRadius);
 bottomLeft.addEventListener('input', setBorderRadius);
 bottomRight.addEventListener('input', setBorderRadius);
 
+codeButton.addEventListener('click', generateCode);
 
 function generateCode() {
 
+    codeDiv.innerHTML = '';
+
     setDefaultValue();
 
-    let option1 = `.box {
-        border-top-left-radius: ${topLeft.value}px;
-        border-top-right-radius: ${topRight.value}px;
-        border-bottom-right-radius: ${bottomRight.value}px;
-        border-bottom-left-radius: ${bottomLeft.value}px;
+    if (compareValues()) {
+        let code = `.box {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;border-radius: ${topLeft.value}px;<br>
+        }`;
+        codeDiv.innerHTML += `<p>${code}</p>`;
+        return;
+    }
+
+    let code1 = `.box {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;border-top-left-radius: ${topLeft.value}px;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;border-top-right-radius: ${topRight.value}px;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;border-bottom-right-radius: ${bottomRight.value}px;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;border-bottom-left-radius: ${bottomLeft.value}px;<br>
     }`
 
-    let option2 = `.box {
-        border-radius: ${topLeft.value}px ${topRight.value}px ${bottomRight.value}px ${bottomLeft.value}px;
+    let code2 = `.box {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;border-radius: ${topLeft.value}px ${topRight.value}px ${bottomRight.value}px ${bottomLeft.value}px;<br>
     }`
 
-    console.log(option1)
-    console.log(option2)
-    
+    codeDiv.innerHTML += `<p>${code1}</p>`;
+    // codeDiv.innerHTML += '<br>'
+    codeDiv.innerHTML += `<p>${code2}</p>`;
+
 }
-
 
 function setDefaultValue() {
     if (topLeft.value == '') {
@@ -48,11 +62,20 @@ function setDefaultValue() {
         topRight.value = 0;
     }
 
-    if (bottomLeft.value == '') {
-        bottomLeft.value = 0;
-    }
-
     if (bottomRight.value == '') {
         bottomRight.value = 0;
     }
+
+    if (bottomLeft.value == '') {
+        bottomLeft.value = 0;
+    }
+}
+
+function compareValues() {
+    if (topLeft.value == topRight.value &&
+        topRight.value == bottomRight.value &&
+        bottomRight.value == bottomLeft.value &&
+        bottomLeft.value == topLeft.value) {
+            return true;
+        }
 }
