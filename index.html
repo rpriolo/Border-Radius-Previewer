@@ -10,24 +10,33 @@
 <body>
     
     <header>
-        <h1>Visualizador da propriedade <em>border-radius</em></h1>
+        <h1><em>border-radius</em> previewer</h1>
     </header>
 
     <main>
-        <form>
-            <label for="top-left">Top-left:</label>
-            <input type="number" id="top-left" placeholder="px" min="0">
+        <form class="grid-container">
+
+            <div class="top-left">
+                <label for="top-left">Top-left</label>
+                <input class="input-number" type="number" id="top-left" placeholder="px" min="0">
+            </div>
         
-            <label for="top-right">Top-right:</label>
-            <input type="number" id="top-right" placeholder="px" min="0">
+            <div class="top-right">
+                <label for="top-right">Top-right</label>
+                <input class="input-number" type="number" id="top-right" placeholder="px" min="0">
+            </div>
 
             <div class="box"></div>
         
-            <label for="bottom-left">Bottom-left:</label>
-            <input type="number" id="bottom-left" placeholder="px" min="0">
-            
-            <label for="bottom-right">Bottom-right:</label>
-            <input type="number" id="bottom-right" placeholder="px"min="0">
+            <div class="bottom-left">
+                <label for="bottom-left">Bottom-left</label>
+                <input class="input-number" type="number" id="bottom-left" placeholder="px" min="0">
+            </div>
+
+            <div class="bottom-right">
+                <label for="bottom-right">Bottom-right</label>
+                <input class="input-number" type="number" id="bottom-right" placeholder="px"min="0">
+            </div>
 
         </form>
         
