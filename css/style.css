@@ -82,7 +82,7 @@ label {
 #code1-div, #code2-div {
     font-family: 'JetBrains Mono', monospace;
     width: 100%;
-    padding: 15px 25px;
+    padding: 15px;
     margin: auto;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
@@ -90,6 +90,7 @@ label {
     text-align: start;
     box-sizing: border-box;
     font-size: 12px;
+    overflow: hidden;
 }
 
 #or {
@@ -100,4 +101,8 @@ label {
 
 .hidden {
     display: none;
+}
+
+.copy-button {
+    float: right;
 }
