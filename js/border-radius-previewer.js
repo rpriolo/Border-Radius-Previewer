@@ -15,28 +15,25 @@ function setBorderRadius() {
     box.style.borderBottomLeftRadius = `${bottomLeft.value}px`;
 }
 
-function validateNumber() {
-    if (this.value < 0) {
-        this.value = 0;
-        setBorderRadius();
-    }
-}
-
 function setDefaultValue() {
     if (topLeft.value == '' || topLeft.value < 0) {
         topLeft.value = 0;
+        setBorderRadius();
     }
 
     if (topRight.value == '' || topRight.value < 0) {
         topRight.value = 0;
+        setBorderRadius();
     }
 
     if (bottomRight.value == '' || bottomRight.value < 0) {
         bottomRight.value = 0;
+        setBorderRadius();
     }
 
     if (bottomLeft.value == '' || bottomLeft.value < 0) {
         bottomLeft.value = 0;
+        setBorderRadius();
     }
 }
 
@@ -83,9 +80,9 @@ topRight.addEventListener('input', setBorderRadius);
 bottomRight.addEventListener('input', setBorderRadius);
 bottomLeft.addEventListener('input', setBorderRadius);
 
-topLeft.addEventListener('focusout', validateNumber);
-topRight.addEventListener('focusout', validateNumber);
-bottomRight.addEventListener('focusout', validateNumber);
-bottomLeft.addEventListener('focusout', validateNumber);
+topLeft.addEventListener('focusout', setDefaultValue);
+topRight.addEventListener('focusout', setDefaultValue);
+bottomRight.addEventListener('focusout', setDefaultValue);
+bottomLeft.addEventListener('focusout', setDefaultValue);
 
 codeButton.addEventListener('click', generateCode);
