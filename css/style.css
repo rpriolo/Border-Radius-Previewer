@@ -4,7 +4,12 @@
     font-family: 'JetBrains Mono', monospace;
 }
 
+body {
+    background-color: rgb(0, 19, 33);
+}
+
 header, main, footer {
+    color: white;
     width: 640px;
     margin: auto;
     text-align: center;
@@ -42,9 +47,11 @@ em {
 .input-number {
     width: 50px;
     height: 50px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.075);
     padding: 0 15px;
+    color: white;
 }
 
 label {
@@ -55,26 +62,29 @@ label {
 .box {
     width: 300px;
     height: 300px;
-    border: 1px solid black;
+    border: 2px solid white;
     margin: 20px auto;
     grid-column: span 2;
+    background-color: rgba(17, 94, 111, 0.75);
 }
 
 #generate-code {
     font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
     margin: 25px 0;
     width: 150px;
     height: 50px;
     text-transform: uppercase;
     letter-spacing: 0.75px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgb(79, 209, 235);
     border-radius: 5px;
-    background-color: rgb(43, 89, 255);
-    color: white;
+    background-color: rgb(35, 181, 211);
+    color: rgb(0, 19, 33);
+    transition: 0.5s;
 }
 
 #generate-code:hover {
-    background-color: rgb(73, 113, 255);
+    background-color: rgb(94, 211, 234);
     transition: 0.5s;
     cursor: pointer;
 }
@@ -84,9 +94,9 @@ label {
     width: 100%;
     padding: 15px;
     margin: auto;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 5px;
-    background-color: rgb(0, 0, 0, 0.025);
+    background-color: rgba(255, 255, 255, 0.15);
     text-align: start;
     box-sizing: border-box;
     font-size: 12px;
@@ -105,4 +115,27 @@ label {
 
 .copy-button {
     float: right;
+    border: 1px solid rgb(149, 194, 203);
+    border-radius: 5px;
+    background-color: rgba(149, 194, 203, 0.778);
+    font-size: 12px;
+    padding: 5px 8px;
+}
+
+footer {
+    font-weight: 100;
+    font-size: 12px;
+    padding: 15px 0;
+}
+
+footer p {
+    margin: 7px;
+}
+
+footer strong {
+    font-weight: 700;
+}
+
+a {
+    color: #23B5D3;
 }
