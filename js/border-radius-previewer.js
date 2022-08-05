@@ -6,7 +6,14 @@ let bottomRight = document.querySelector('#bottom-right');
 let bottomLeft = document.querySelector('#bottom-left');
 
 let codeButton = document.querySelector('#generate-code');
-let codeDiv = document.querySelector('#code');
+let code1Div = document.querySelector('#code1-div');
+let code2Div = document.querySelector('#code2-div');
+let code1p = document.querySelector('#code1')
+let code2p = document.querySelector('#code2')
+let orDiv = document.querySelector('#or');
+
+let copyButton1 = document.querySelector('#copy-button1');
+let copyButton2 = document.querySelector('#copy-button2');
 
 function setBorderRadius() {
     box.style.borderTopLeftRadius = `${topLeft.value}px`;
@@ -46,33 +53,64 @@ function compareValues() {
     }
 }
 
+function resetCode() {
+    code1p.innerHTML = '';
+    code2p.innerHTML = '';
+    code1Div.classList.add('hidden');
+    code2Div.classList.add('hidden');
+    orDiv.classList.add('hidden');
+}
+
 function generateCode() {
 
-    codeDiv.innerHTML = '';
-
+    resetCode();
     setDefaultValue();
 
     if (compareValues()) {
-        let code = `.box {<br>
+        code1Div.classList.remove('hidden');
+        let code1 = `.box {<br>
             &nbsp;&nbsp;&nbsp;&nbsp;border-radius: ${topLeft.value}px;<br>
         }`;
-        codeDiv.innerHTML += `<p>${code}</p>`;
+        code1p.innerHTML += `${code1}`;
+        // code2Div.classList.add('hidden');
         return;
+    } else {
+        code1Div.classList.remove('hidden');
+        orDiv.classList.remove('hidden');
+        code2Div.classList.remove('hidden');
+        
+        let code1 = `.box {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;border-top-left-radius: ${topLeft.value}px;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;border-top-right-radius: ${topRight.value}px;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;border-bottom-right-radius: ${bottomRight.value}px;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;border-bottom-left-radius: ${bottomLeft.value}px;<br>
+        }`
+    
+        let code2 = `.box {<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;border-radius: ${topLeft.value}px ${topRight.value}px ${bottomRight.value}px ${bottomLeft.value}px;<br>
+        }`
+    
+        code1p.innerHTML += `${code1}`;
+        code2p.innerHTML += `${code2}`;
     }
+}
 
-    let code1 = `.box {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;border-top-left-radius: ${topLeft.value}px;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;border-top-right-radius: ${topRight.value}px;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;border-bottom-right-radius: ${bottomRight.value}px;<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;border-bottom-left-radius: ${bottomLeft.value}px;<br>
-    }`
+function copyCode1() {
+    let range = document.createRange();
+    range.selectNode(code1p);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+}
 
-    let code2 = `.box {<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;border-radius: ${topLeft.value}px ${topRight.value}px ${bottomRight.value}px ${bottomLeft.value}px;<br>
-    }`
-
-    codeDiv.innerHTML += `<p>${code1}</p>`;
-    codeDiv.innerHTML += `<p>${code2}</p>`;
+function copyCode2() {
+    let range = document.createRange();
+    range.selectNode(code2p);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
 }
 
 topLeft.addEventListener('input', setBorderRadius);
@@ -86,3 +124,6 @@ bottomRight.addEventListener('focusout', setDefaultValue);
 bottomLeft.addEventListener('focusout', setDefaultValue);
 
 codeButton.addEventListener('click', generateCode);
+
+copyButton1.addEventListener('click', copyCode1)
+copyButton2.addEventListener('click', copyCode2)
