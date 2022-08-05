@@ -7,8 +7,12 @@
 header, main, footer {
     width: 640px;
     margin: auto;
-    /* background-color: rgb(157, 191, 178); */
     text-align: center;
+    font-size: 14px;
+}
+
+header {
+    font-size: 18px;
 }
 
 em {
@@ -46,7 +50,6 @@ em {
 label {
     margin: 5px;
     text-transform: lowercase;
-    font-size: 14px;
 }
 
 .box {
@@ -62,7 +65,6 @@ label {
     margin: 25px 0;
     width: 150px;
     height: 50px;
-    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.75px;
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -77,7 +79,7 @@ label {
     cursor: pointer;
 }
 
-#code {
+#code1-div, #code2-div {
     font-family: 'JetBrains Mono', monospace;
     width: 100%;
     padding: 15px 25px;
@@ -87,4 +89,15 @@ label {
     background-color: rgb(0, 0, 0, 0.025);
     text-align: start;
     box-sizing: border-box;
+    font-size: 12px;
+}
+
+#or {
+    text-align: start;
+    padding-left: 10px;
+    text-transform: uppercase;
+}
+
+.hidden {
+    display: none;
 }
